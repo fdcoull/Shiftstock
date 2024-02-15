@@ -28,4 +28,9 @@ class UserController extends Controller
 
         return "Registered and logged in";
     }
+
+    public function logout() {
+        auth()->logout();
+        return redirect('/');
+    }
 }

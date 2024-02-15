@@ -32,5 +32,11 @@ Route::get('/login', function () {
     return view('temp/login');
 });
 
+Route::get('/logout', function () {
+    return view('temp/logout');
+});
+
 // Back-end
 Route::post('/user/register', [UserController::class, 'register']);
+
+Route::post('/user/logout', [UserController::class, 'logout']);
