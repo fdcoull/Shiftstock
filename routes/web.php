@@ -38,5 +38,5 @@ Route::get('/logout', function () {
 
 // Back-end
 Route::post('/user/register', [UserController::class, 'register']);
-
 Route::post('/user/logout', [UserController::class, 'logout']);
+Route::post('/user/login', [UserController::class, 'login']);

@@ -7,6 +7,7 @@
 <body>
     <h2>Login</h2>
     <form action="/user/login" method="POST">
+        @csrf
         <input type="text" placeholder="Username" name="username">
         <input type="password" placeholder="Password" name="password">
         <input type="Submit" value="Login">

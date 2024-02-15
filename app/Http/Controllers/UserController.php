@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function register(Request $request) {
-        // Validate inputs
+        // Validate field inputs
         $fields = $request->validate([
             'username' => ['required', 'min:3', 'max:15', Rule::unique('users', 'username')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -29,7 +29,24 @@ class UserController extends Controller
         return "Registered and logged in";
     }
 
+    public function login(Request $request) {
+        // Validate field inputs
+        $fields = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        // Check if username password combination matches a user
+        if (auth()->attempt(['username' => $fields['username'], 'password' => $fields['password']])) {
+            // Authenticate user
+            $request->session()-regenerate();
+        }
+
+        return redirect('/');
+    }
+
     public function logout() {
+        // Un-authenticate user
         auth()->logout();
         return redirect('/');
     }
