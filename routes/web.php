@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,6 @@ Route::post('/user/login', [UserController::class, 'login']);
 Route::get('/new-listing', function () {
     return view('temp/new-listing');
 });
+
+// Back-end
+Route::post('/listing/new', [ListingController::class, 'newListing']);
