@@ -40,3 +40,9 @@ Route::get('/logout', function () {
 Route::post('/user/register', [UserController::class, 'register']);
 Route::post('/user/logout', [UserController::class, 'logout']);
 Route::post('/user/login', [UserController::class, 'login']);
+
+// Listings
+// Front-end
+Route::get('/new-listing', function () {
+    return view('temp/new-listing');
+});
