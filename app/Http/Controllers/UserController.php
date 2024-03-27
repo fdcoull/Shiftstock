@@ -32,17 +32,17 @@ class UserController extends Controller
     public function login(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         // Check if username password combination matches a user
-        if (auth()->attempt(['username' => $fields['username'], 'password' => $fields['password']])) {
+        if (auth()->attempt(['email' => $fields['email'], 'password' => $fields['password']])) {
             // Authenticate user
-            $request->session()-regenerate();
+            $request->session()->regenerate();
         }
 
-        return redirect('/');
+        return redirect('/logout');
     }
 
     public function logout() {
