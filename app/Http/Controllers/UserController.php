@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function register(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
-            'username' => ['required', 'min:3', 'max:15', Rule::unique('users', 'username')],
+            'name' => ['required', 'min:3', 'max:15'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:8', 'max:256'],
-            'businessName' => 'required',
-            'recoveryEmail' => ['required', 'email']
+            'business_name' => 'required',
+            'password' => ['required', 'min:8', 'max:256']
         ]);
 
         // Hash password
@@ -32,17 +32,17 @@ class UserController extends Controller
     public function login(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         // Check if username password combination matches a user
-        if (auth()->attempt(['username' => $fields['username'], 'password' => $fields['password']])) {
+        if (auth()->attempt(['email' => $fields['email'], 'password' => $fields['password']])) {
             // Authenticate user
-            $request->session()-regenerate();
+            $request->session()->regenerate();
         }
 
-        return redirect('/');
+        return redirect('/logout');
     }
 
     public function logout() {
