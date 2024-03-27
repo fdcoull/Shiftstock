@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function register(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
-            'username' => ['required', 'min:3', 'max:15', Rule::unique('users', 'username')],
+            'name' => ['required', 'min:3', 'max:15'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:8', 'max:256'],
-            'businessName' => 'required',
-            'recoveryEmail' => ['required', 'email']
+            'business_name' => 'required',
+            'password' => ['required', 'min:8', 'max:256']
         ]);
 
         // Hash password
