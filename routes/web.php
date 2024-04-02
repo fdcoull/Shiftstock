@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
@@ -48,5 +49,11 @@ Route::get('/new-listing', function () {
     return view('temp/new-listing');
 });
 
+Route::get('/listings', function() {
+    $listings = Listing::all();
+    return view('temp/listings', ['listings' => $listings]);
+});
+
 // Back-end
 Route::post('/listings/new', [ListingController::class, 'newListing']);
+
