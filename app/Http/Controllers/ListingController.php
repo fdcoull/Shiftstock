@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     public function newListing(Request $request) {
+        //Validate fields
         $fields = $request->validate([
             'title' => 'required',
             'description' => 'max:10000',
@@ -21,16 +22,12 @@ class ListingController extends Controller
             'expiry' => 'date'
         ]);
 
+        //Strip tags
         $fields['title'] = strip_tags($fields['title']);
         $fields['description'] = strip_tags($fields['description']);
         $fields['packaging'] = strip_tags($fields['packaging']);
-        //$fields['weight'] = $fields['weight'];
         $fields['weight_unit'] = strip_tags($fields['weight_unit']);
-        //$fields['quantity_inhand'] = $fields['quantity_inhand'];
-        //$fields['price'] = $fields['quantity'];
         $fields['currency'] = strip_tags($fields['currency']);
-        //$fields['age'] = $fields['age'];
-        //$fields['expiry'] = $fields['expiry'];
 
         $fields['user_id'] = auth()->id();
 

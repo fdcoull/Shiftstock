@@ -25,7 +25,7 @@ return new class extends Migration
             $table->tinyText('currency');
             $table->date('age');
             $table->date('expiry');
-            $table->boolean('listed');
+            $table->boolean('listed')->default(1);
             $table->foreignId('user_id')->constrained();
             
         });
