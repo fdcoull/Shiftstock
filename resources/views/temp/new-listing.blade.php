@@ -11,11 +11,24 @@
         <input type="text" name="title" placeholder="Title">
         <input type="text" name="description" placeholder="Description">
         <input type="text" name="packaging" placeholder="Packaging">
-        <input type="text" name="weight" placeholder="Weight">
-        <input type="text" name="weight_unit" placeholder="Weight Unit">
-        <input type="text" name="price" placeholder="Price">
-        <input type="text" name="currency" placeholder="Currency (In 3 character ISO format)">
-        <input type="text" name="age" placeholder="Item Age">
+        <input type="number" name="weight" placeholder="Weight">
+        <select name="weight_unit">
+            <option value="KG">Kilogram</option>
+            <option value="G">Gram</option>
+            <option value="TN">Metric Tonne</option>
+            <option value="OZ">Ounce</option>
+            <option value="LB">Pound</option>
+            <option value="ST">Stone</option>
+        </select>
+        <input type="number" name="quantity_inhand" placeholder="Quantity">
+        <input type="number" name="price" placeholder="Price">
+        <select name="currency">
+            <option value="GBP">British Pound</option>
+            <option value="EUR">Euro</option>
+            <option value="USD">US Dollar</option>
+        </select>
+        Age: <input type="date" name="age">
+        Expiry: <input type="date" name="expiry">
         <input type="submit" value="Add">
     </form>
 </body>
