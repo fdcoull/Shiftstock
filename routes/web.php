@@ -54,6 +54,10 @@ Route::get('/listings', function() {
     return view('temp/listings', ['listings' => $listings]);
 });
 
+Route::get('/product/{id}', function($id) {
+    return view('temp/product', ['listing' => Listing::find($id)]);
+});
+
 // Back-end
 Route::post('/listings/new', [ListingController::class, 'newListing']);
 

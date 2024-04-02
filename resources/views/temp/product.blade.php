@@ -6,14 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-
-    <h1>Listings</h1>
-    @foreach($listings as $listing)
-    <div>
-        <a href="/product/{{$listing['id']}}"><h2>{{$listing['title']}}</h2></a>
-        <p>{{$listing['description']}}</p>
-    </div>
-    @endforeach
-    
+    <h1>{{$listing['title']}}</h1>
+    <p>{{$listing['description']}}</p>
 </body>
 </html>
