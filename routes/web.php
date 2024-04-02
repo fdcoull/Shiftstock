@@ -50,7 +50,7 @@ Route::get('/new-listing', function () {
 });
 
 Route::get('/listings', function() {
-    $listings = Listing::all();
+    $listings = Listing::orderBy('id', 'desc')->get();
     return view('temp/listings', ['listings' => $listings]);
 });
 
