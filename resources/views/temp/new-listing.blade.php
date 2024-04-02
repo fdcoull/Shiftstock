@@ -31,5 +31,14 @@
         Expiry: <input type="date" name="expiry">
         <input type="submit" value="Add">
     </form>
+
+    <br>
+    
+
+    @auth
+    {{Auth::user()->name}}
+    @else
+    <p>Not logged in</p>
+    @endauth
 </body>
 </html>

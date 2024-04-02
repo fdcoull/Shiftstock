@@ -9,5 +9,5 @@ class Listing extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'packaging', 'weight', 'weight_unit', 'price', 'currency', 'age', 'user_id'];
+    protected $fillable = ['title', 'description', 'packaging', 'weight', 'weight_unit', 'quantity_inhand', 'price', 'currency', 'age', 'expiry', 'user_id'];
 }

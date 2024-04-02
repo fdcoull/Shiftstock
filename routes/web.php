@@ -49,4 +49,4 @@ Route::get('/new-listing', function () {
 });
 
 // Back-end
-Route::post('/listing/new', [ListingController::class, 'newListing']);
+Route::post('/listings/new', [ListingController::class, 'newListing']);
