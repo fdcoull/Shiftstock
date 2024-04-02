@@ -18,14 +18,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('packaging'); 
-            $table->string('weight');
-            $table->string('weight_unit');
-            $table->string('quantity_inhand');
-            $table->string('price');
-            $table->string('currency');
-            $table->string('age');
-            $table->string('expiry');
-            $table->string('listed');
+            $table->double('weight', 12, 3);
+            $table->tinyText('weight_unit');
+            $table->integer('quantity_inhand');
+            $table->double('price', 11, 2);
+            $table->tinyText('currency');
+            $table->date('age');
+            $table->date('expiry');
+            $table->boolean('listed');
             $table->foreignId('user_id')->constrained();
             
         });
