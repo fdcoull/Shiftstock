@@ -8,6 +8,10 @@
 <body>
 
     <h1>Listings</h1>
+    <form action="/" >
+        <input type="text" name="query">
+        <input type="submit" value="Search">
+    </form>
     @foreach($listings as $listing)
     <div>
         <a href="/product/{{$listing['id']}}"><h2>{{$listing['title']}}</h2></a>
