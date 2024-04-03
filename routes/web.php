@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Listing;
+use App\Models\ListingImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
@@ -56,7 +57,7 @@ Route::get('/listings', function() {
 });
 
 Route::get('/product/{id}', function($id) {
-    return view('temp/product', ['listing' => Listing::find($id)]);
+    return view('temp/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
 });
 
 Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
