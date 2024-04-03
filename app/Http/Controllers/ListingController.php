@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     public function index() {
-        $listings = Listing::orderBy('id', 'desc')->get();
+        if (request()->has('query')) {
+            $listings = Listing::where('title', 'like', '%'. request()->get('query', '') . '%')->orWhere('description', 'like', '%'. request()->get('query', '') . '%')->orderBy('id', 'desc')->get();
+        }
+        else {
+            $listings = Listing::orderBy('id', 'desc')->get();
+        }
+
         return view('temp/listings', ['listings' => $listings]);
     }
-    
+
     public function newListing(Request $request) {
         //Validate fields
         $fields = $request->validate([
