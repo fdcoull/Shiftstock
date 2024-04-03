@@ -14,12 +14,16 @@ class ListingImageController extends Controller
     }
 
     public function store(Request $request, int $id) {
+        $listing = Listing::find($id);
+
+        if (auth()->user()->id !== $listing['user_id']) {
+            return redirect('/');
+        }
+
         $request->validate([
             'images.*' => 'required|image|mimes:png,jpg,jpeg'
 
         ]);
-
-        $listing = Listing::find($id);
 
         //Upload files
         $imageData = [];
