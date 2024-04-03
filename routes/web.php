@@ -64,3 +64,6 @@ Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
 // Back-end
 Route::post('/listings/new', [ListingController::class, 'newListing']);
 
+Route::post('/product/{id}/image', [ListingImageController::class, 'store']);
+
+
