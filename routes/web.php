@@ -4,6 +4,7 @@ use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\ListingImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,8 @@ Route::get('/listings', function() {
 Route::get('/product/{id}', function($id) {
     return view('temp/product', ['listing' => Listing::find($id)]);
 });
+
+Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
 
 // Back-end
 Route::post('/listings/new', [ListingController::class, 'newListing']);
