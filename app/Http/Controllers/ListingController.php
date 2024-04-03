@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
+    public function index() {
+        $listings = Listing::orderBy('id', 'desc')->get();
+        return view('temp/listings', ['listings' => $listings]);
+    }
+    
     public function newListing(Request $request) {
         //Validate fields
         $fields = $request->validate([

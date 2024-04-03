@@ -51,10 +51,7 @@ Route::get('/new-listing', function () {
     return view('temp/new-listing');
 });
 
-Route::get('/listings', function() {
-    $listings = Listing::orderBy('id', 'desc')->get();
-    return view('temp/listings', ['listings' => $listings]);
-});
+Route::get('/listings', [ListingController::class, 'index']);
 
 Route::get('/product/{id}', function($id) {
     return view('temp/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
