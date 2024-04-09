@@ -20,13 +20,19 @@ class UserController extends Controller
         // Hash password
         $fields['password'] = bcrypt($fields['password']);
 
-        // Create user entry
-        $user = User::create($fields);
+        try {
+            // Create user entry
+            $user = User::create($fields);
 
-        // Authenticate user
-        auth()->login($user);
+            // Authenticate user
+            auth()->login($user);
 
-        return "Registered and logged in";
+            // Redirect with success message
+            return redirect('/')->with('success', 'Registered and logged in successfully!');
+        } catch (\Exception $e) {
+            // Redirect back with an error message
+            return back()->withInput()->withErrors('Registration failed, please try again.');
+        }
     }
 
     public function login(Request $request) {
