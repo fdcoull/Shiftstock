@@ -19,31 +19,37 @@ class ListingController extends Controller
     }
 
     public function newListing(Request $request) {
-        //Validate fields
-        $fields = $request->validate([
-            'title' => 'required',
-            'description' => 'max:10000',
-            'packaging' => 'max:256',
-            'weight' => 'numeric',
-            'weight_unit' => ['min:1', 'max:4'],
-            'quantity_inhand' => 'integer',
-            'price' => ['required', 'numeric'],
-            'currency' => ['required', 'min:3', 'max:3'],
-            'age' => 'date',
-            'expiry' => 'date'
-        ]);
+        try {
+            //Validate fields
+            $fields = $request->validate([
+                'title' => 'required',
+                'description' => 'max:10000',
+                'packaging' => 'max:256',
+                'weight' => 'numeric',
+                'weight_unit' => ['min:1', 'max:4'],
+                'quantity_inhand' => 'integer',
+                'price' => ['required', 'numeric'],
+                'currency' => ['required', 'min:3', 'max:3'],
+                'age' => 'date',
+                'expiry' => 'date'
+            ]);
 
-        //Strip tags
-        $fields['title'] = strip_tags($fields['title']);
-        $fields['description'] = strip_tags($fields['description']);
-        $fields['packaging'] = strip_tags($fields['packaging']);
-        $fields['weight_unit'] = strip_tags($fields['weight_unit']);
-        $fields['currency'] = strip_tags($fields['currency']);
+            //Strip tags
+            $fields['title'] = strip_tags($fields['title']);
+            $fields['description'] = strip_tags($fields['description']);
+            $fields['packaging'] = strip_tags($fields['packaging']);
+            $fields['weight_unit'] = strip_tags($fields['weight_unit']);
+            $fields['currency'] = strip_tags($fields['currency']);
 
-        $fields['user_id'] = auth()->id();
+            $fields['user_id'] = auth()->id();
 
-        Listing::create($fields);
+            Listing::create($fields);
 
-        return redirect('/');
+            // Redirect on success
+            return redirect('/')->with('success', 'Listing created successfully!');
+
+       } catch (\Exception $e) {
+            // Redirect back with a generic error message
+            return back()->with('error', 'An unexpected error occurred. Please try again later.')->withInput();
     }
 }
