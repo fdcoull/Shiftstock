@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Middleware",
+    "\\app\\Models",
+    "\\public",
+    "\\resources",
+    "\\routes"
+  ],
+  "SelectedNode": "\\.gitattributes",
+  "PreviewInSolutionExplorer": false
+}

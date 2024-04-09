@@ -21,16 +21,16 @@ class ListingController extends Controller
     public function newListing(Request $request) {
         //Validate fields
         $fields = $request->validate([
-            'title' => 'required',
-            'description' => 'max:10000',
-            'packaging' => 'max:256',
-            'weight' => 'numeric',
-            'weight_unit' => ['min:1', 'max:4'],
-            'quantity_inhand' => 'integer',
-            'price' => ['required', 'numeric'],
-            'currency' => ['required', 'min:3', 'max:3'],
-            'age' => 'date',
-            'expiry' => 'date'
+            'title' => ['required','string','min:3','max:256'],
+            'description' => ['required','string','max:1000'],
+            'packaging' => ['nullable','string','max:256'],
+            'weight' => ['required','numeric','min:0.01','max:100000'],
+            'weight_unit' => ['required','string','in:kg,lb,oz,g'],
+            'quantity_inhand' => ['required','integer','min:1'],
+            'price' => ['required', 'numeric', 'min:0.01'],
+            'currency' => ['required', 'string', 'size:3'],
+            'age' => ['nullable','date'],
+            'expiry' => ['nullable','date','after:age']
         ]);
 
         //Strip tags
