@@ -11,10 +11,10 @@ class UserController extends Controller
     public function register(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
-            'name' => ['required', 'min:3', 'max:15'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'business_name' => 'required',
-            'password' => ['required', 'min:8', 'max:256']
+        'name' => ['required', 'min:3', 'max:25', 'regex:/^[a-zA-Z\s]+$/'],
+        'email' => ['required', 'email', 'lowercase', Rule::unique('users', 'email')],
+        'business_name' => ['required', 'min:3', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'],
+        'password' => ['required', 'min:8', 'max:256', 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'],
         ]);
 
         // Hash password
