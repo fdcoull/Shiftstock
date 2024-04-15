@@ -47,7 +47,7 @@
 			<p class="card-text" id="text"> we now have PVC Aprons on offer Check out our limited-time offer.</p>
 			<button onclick="changeTextSize()">Increase Text Size</button>
 			<script src="https://github.com/emma123456789101/test-gp/blob/main/scripts.js"></script>
-            <a href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/items.html" class="btn btn-primary">Shop Now</a>
+            <a href=#>Items class="btn btn-primary">Shop Now</a>
           </div>
         </div>
       </div>

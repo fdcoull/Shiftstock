@@ -8,7 +8,7 @@
 <body>
 
     <h1>Listings</h1>
-    <form action="/listings" >
+    <form>
         <input type="text" name="query">
         <input type="submit" value="Search">
     </form>

@@ -68,7 +68,7 @@ Route::get('/new-listing', function () {
     return view('new-listing');
 });
 
-Route::get('/listings', [ListingController::class, 'index']);
+Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 
 Route::get('/product/{id}', function($id) {
     return view('temp/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);

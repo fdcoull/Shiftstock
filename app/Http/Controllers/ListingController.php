@@ -15,7 +15,7 @@ class ListingController extends Controller
             $listings = Listing::orderBy('id', 'desc')->get();
         }
 
-        return view('temp/listings', ['listings' => $listings]);
+        return view('listings', ['listings' => $listings]);
     }
 
     public function newListing(Request $request) {

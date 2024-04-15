@@ -18,7 +18,7 @@
               <a class="nav-link" href="{{ route('home') }}">Home</a>
             </li>
 			 <li class="nav-item">
-              <a class="nav-link" href=#>Items</a>
+              <a class="nav-link" href="{{ route('listings.index') }}">Items</a>
             </li>
             		<li class="nav-item">
               <a class="nav-link" href="{{ route('aboutus') }}">About Us</a>
