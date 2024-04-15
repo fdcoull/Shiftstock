@@ -22,6 +22,10 @@ class ContactController extends Controller
             'message' => $request->message
         ];
 
+        $fields['name'] = strip_tags($fields['name']);
+        $fields['email'] = strip_tags($fields['email']);
+        $fields['message'] = strip_tags($fields['message']);
+
         Mail::to('your-receiving-email@example.com')->send(new ContactMail($details));
 
         return back()->with('success', 'Thank you for contacting us!');
