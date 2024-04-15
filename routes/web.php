@@ -33,12 +33,21 @@ Route::get('/register', function () {
 });
 
 Route::get('/login', function () {
-    return view('temp/login');
+    return view('login');
 });
 
 Route::get('/logout', function () {
     return view('temp/logout');
 });
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
+Route::get('/contactus', function () {
+    return view('contactus');
+});
+
 
 // Back-end
 Route::post('/user/register', [UserController::class, 'register']);
@@ -48,7 +57,7 @@ Route::post('/user/login', [UserController::class, 'login']);
 // Listings
 // Front-end
 Route::get('/new-listing', function () {
-    return view('temp/new-listing');
+    return view('new-listing');
 });
 
 Route::get('/listings', [ListingController::class, 'index']);
@@ -64,4 +73,4 @@ Route::post('/listings/new', [ListingController::class, 'newListing']);
 
 Route::post('/product/{id}/image', [ListingImageController::class, 'store']);
 
-
+Route::post('/contact/new', [ContactController::class, 'sendMail']);
