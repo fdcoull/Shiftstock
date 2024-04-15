@@ -9,100 +9,85 @@
   <style>
     /* Custom Styles */
     .jumbotron {
-       background-image: url('file:///D:/Users/Emma%20Davidson/Downloads/about-contact-banners.jpg');
-      background-size: cover; 
-	  background-repeat: no-repeat;
-	  background-position: center; /* Center the background image */
-      color: #fff;
-      text-align: center;
-      padding: 100px 0;
+        background-image: url('file:///D:/Users/Emma%20Davidson/Downloads/about-contact-banners.jpg');
+        background-size: cover; 
+	    background-repeat: no-repeat;
+	    background-position: center; /* Center the background image */
+        color: #fff;
+        text-align: center;
+        padding: 100px 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container2 {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .cart-item img {
+        max-width: 100px;
+        height: auto;
+        margin-right: 20px;
+    }
+    .cart-item-info {
+        flex-grow: 1;
+    }
+    .cart-item-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+    .cart-item-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #666;
+    }
+    .cart-total {
+        margin-top: 20px;
+        text-align: right;
+    }
+    .cart-total p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #333;
+    }
+    .checkout-btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .checkout-btn:hover {
+        background-color: #0056b3;
     }
   </style>
 
+</head>
+<body>
   <header>
     @include('navbar')
   </header>
-</head>
-<body>
 
-  <!-- Main Content -->
-  <main>
-    <!-- Jumbotron -->
-    <section class="jumbotron">
-      <div class="containers">
-        <h1 class="display-4">Contact Us</h1>
-        <p class="lead">We're here to help. Contact us if you have any questions or inquiries.</p>
-      </div>
-    </section>
-    <!-- End Jumbotron -->
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .cart-item {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .cart-item img {
-            max-width: 100px;
-            height: auto;
-            margin-right: 20px;
-        }
-        .cart-item-info {
-            flex-grow: 1;
-        }
-        .cart-item-info h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #333;
-        }
-        .cart-item-info p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #666;
-        }
-        .cart-total {
-            margin-top: 20px;
-            text-align: right;
-        }
-        .cart-total p {
-            margin: 5px 0;
-            font-size: 16px;
-            color: #333;
-        }
-        .checkout-btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .checkout-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
+<div class="container2">
     <h2>Your Shopping Cart</h2>
     <div id="cart-items">
         <!-- Cart items will be dynamically added here -->
