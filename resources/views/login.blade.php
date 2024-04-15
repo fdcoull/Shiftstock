@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
   body {
+
+
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -52,7 +54,7 @@ input[type="password"] {
   border-radius: 5px;
 }
 
-button {
+#login_btn {
   width: calc(100% - 20px);
   padding: 10px;
   background-color: #007bff;
@@ -109,7 +111,7 @@ button:hover {
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password">
         </div>
-        <button type="submit">Login</button>
+        <button id="login_btn" type="submit">Login</button>
       </form>
       <div class="additional-info">
         <a href="#">Forgot password?</a>

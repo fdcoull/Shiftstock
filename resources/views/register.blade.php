@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
   body {
 
@@ -54,7 +54,7 @@ input[type="email"]{
   border-radius: 5px;
 }
 
-button {
+#register_btn {
   width: calc(100% - 20px);
   padding: 10px;
   background-color: #007bff;
@@ -125,7 +125,7 @@ button:hover {
           <input type="password" id="password" name="password" placeholder="Enter your password">
         </div>
 
-        <button type="submit">Login</button>
+        <button id="register_btn" type="submit">Register</button>
       </form>
       <div class="additional-info">
         <a href="#">Forgot password?</a>
