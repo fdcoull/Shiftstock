@@ -23,36 +23,7 @@
 </head>
 <body>
   <header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">ShiftStock</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/fcve.html">Home</a>
-            </li>
-			 <li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/items.html#">Items</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/about%20us.html">About Us</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/test.html">log in</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/contact%20us.html">contact us</a>
-            </li>
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+    @include('navbar')
   </header>
 
   <!-- Main Content -->

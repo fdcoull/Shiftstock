@@ -28,25 +28,33 @@ Route::get('/test-bootstrap', function () {
 
 // User
 // Front-end
+Route::get('/home', function () {
+    return view('home');
+})->name('home');;
+
 Route::get('/register', function () {
-    return view('temp/register');
-});
+    return view('register');
+})->name('register');;
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');;
 
 Route::get('/logout', function () {
     return view('temp/logout');
-});
+})->name('temp/logout');;
 
 Route::get('/aboutus', function () {
     return view('aboutus');
-});
+})->name('aboutus');;
 
 Route::get('/contactus', function () {
     return view('contactus');
-});
+})->name('contactus');;
+
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');;
 
 
 // Back-end

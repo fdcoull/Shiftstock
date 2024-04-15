@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('quantity_inhand');
             $table->double('price', 11, 2);
             $table->tinyText('currency');
-            $table->date('age');
+            $table->integer('age');
             $table->date('expiry');
             $table->boolean('listed')->default(1);
             $table->foreignId('user_id')->constrained();

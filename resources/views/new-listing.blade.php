@@ -54,6 +54,9 @@
     }
   </style>
 </head>
+  <header>
+    @include('navbar')
+  </header>
 <body>
 
 
@@ -105,8 +108,8 @@
 		</div>
 		
 		<div class="form-group">
-		  <label for="itemDescription">Age</label>
-		  <input type="date" class="form-control" id="itemDate" name="age" placeholder="Enter age of stock..."></input>
+		  <label for="itemDescription">Age (years)</label>
+		  <input type="number" class="form-control" id="itemDate" name="age" placeholder="Enter age of stock..."></input>
 		</div>
 		
 		<div class="form-group">

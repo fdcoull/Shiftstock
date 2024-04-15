@@ -26,46 +26,7 @@
   </style>
   
   <header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-	  <img src="file:///D:/Users/Emma%20Davidson/Downloads/main.png" alt="Logo" height="30" image-position="left">
-        <a class="navbar-brand" href="#">shift stock</a> 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-		<!-- Search form -->
-    <form class="form-inline my-2 my-lg-0 ml-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <!-- End of search form -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">home</a>
-            </li>
-			 <li class="nav-item">
-              <a class="nav-link" href="items.html">items</a>
-            </li>
-            		<li class="nav-item">
-              <a class="nav-link" href="about.html">about Us</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/pages/log.html">log in</a>
-            </li>
-            
-			<li class="nav-item">
-              <a class="nav-link" href="contact.html">contact us</a>
-            </li>
-		   <li class="nav-item">
-              <a class="nav-link" href="cart.html">cart</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+    @include('navbar')
   </header>
 </head>
 <body>
@@ -73,7 +34,7 @@
   <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to shiftstock</h1>
     <p class="lead">click here to go to our stock available to buy and sell.</p>
-    <a class="btn btn-primary btn-lg" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/about%20us.html" role="button">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="{{ route('aboutus') }}" role="button">Learn more</a>
   </div>
 
   <div class="container">

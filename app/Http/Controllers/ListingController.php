@@ -29,7 +29,7 @@ class ListingController extends Controller
             'quantity_inhand' => 'integer',
             'price' => ['required', 'numeric'],
             'currency' => ['required', 'min:3', 'max:3'],
-            'age' => 'date',
+            'age' => 'numeric',
             'expiry' => 'date'
         ]);
 
