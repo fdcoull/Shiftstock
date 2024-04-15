@@ -6,9 +6,8 @@
   <title>Login</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
+
   body {
-
-
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -44,6 +43,7 @@ label {
   display: block;
   margin-bottom: 5px;
   color: #666;
+  text-align:left;
 }
 
 input[type="text"],
@@ -114,7 +114,7 @@ button:hover {
         <button id="login_btn" type="submit">Login</button>
       </form>
       <div class="additional-info">
-        <a href="#">Forgot password?</a>
+        <a href="{{ route('forgotpassword')}}">Forgot password?</a>
         <span>Don't have an account? <a href="{{ route('register') }}">Sign up</a></span>
       </div>
     </div>

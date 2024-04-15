@@ -33,6 +33,7 @@
 .login-box h2 {
   margin-bottom: 20px;
   color: #333;
+  width:23rem;
 }
 
 .form-group {
@@ -41,8 +42,9 @@
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   color: #666;
+  text-align: left;
 }
 
 input[type="text"],
@@ -125,11 +127,13 @@ button:hover {
           <input type="password" id="password" name="password" placeholder="Enter your password">
         </div>
 
-        <button id="register_btn" type="submit">Register</button>
+        <div class="form-group">
+            <button id="register_btn" type="submit">Register</button>
+        </div>
+
       </form>
       <div class="additional-info">
-        <a href="#">Forgot password?</a>
-        <span>Don't have an account? <a href="{{ route('register') }}">Sign up</a></span>
+        <span>Already have an account? <a href="{{ route('login') }}">Log In</a></span>
       </div>
     </div>
   </div>

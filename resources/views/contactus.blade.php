@@ -17,6 +17,10 @@
       text-align: center;
       padding: 100px 0;
     }
+
+    #submit_btn {
+        margin-bottom:1rem;
+    }
   </style>
 </head>
 <body>
@@ -55,7 +59,7 @@
               <label for="message">Message</label>
               <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
 			<!--- need to add the php form to send a message to the user-->
           </form>
 

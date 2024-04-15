@@ -40,6 +40,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');;
 
+Route::get('/forgotpassword', function () {
+    return view('forgotpassword');
+})->name('forgotpassword');;
+
 Route::get('/logout', function () {
     return view('temp/logout');
 })->name('temp/logout');;
