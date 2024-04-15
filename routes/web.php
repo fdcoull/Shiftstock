@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingImageController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +86,4 @@ Route::post('/listings/new', [ListingController::class, 'newListing']);
 
 Route::post('/product/{id}/image', [ListingImageController::class, 'store']);
 
-Route::post('/contact/new', [ContactController::class, 'sendMail']);
+Route::post('/contact/new', [ContactController::class, 'sendEmail']);

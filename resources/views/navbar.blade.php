@@ -1,7 +1,7 @@
 <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-	  <img src="file:///D:/Users/Emma%20Davidson/Downloads/main.png" alt="Logo" height="30" image-position="left">
+	  <img src="{{ asset('images/logo.png') }}" alt="Logo" height="30" image-position="left">
         <a class="navbar-brand" href="{{ route('home') }}">Shift Stock</a> 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

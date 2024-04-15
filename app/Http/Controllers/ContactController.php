@@ -10,24 +10,18 @@ class ContactController extends Controller
 {
     public function sendEmail(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
         ]);
 
-        $details = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message
-        ];
-
-        $fields['name'] = strip_tags($fields['name']);
-        $fields['email'] = strip_tags($fields['email']);
-        $fields['message'] = strip_tags($fields['message']);
+        // Strip tags and sanitize input
+        $details = array_map('strip_tags', $validated);
 
         Mail::to('your-receiving-email@example.com')->send(new ContactMail($details));
 
         return back()->with('success', 'Thank you for contacting us!');
     }
 }
+
