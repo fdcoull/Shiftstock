@@ -31,6 +31,10 @@
       color: #ffffff;
     }
 
+    #searchform{
+        margin-bottom: 2rem;
+    }
+
 
   </style>
 
@@ -58,9 +62,9 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container">
+  <main class="container" >
     <h2 class="mt-5 mb-4">Available Items</h2>
-    <form action="/listings">
+    <form action="/listings" id="searchform">
       <input type="text" name="query" placeholder="Search items...">
       <input type="submit" value="Search">
     </form>

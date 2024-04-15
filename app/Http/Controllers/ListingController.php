@@ -44,6 +44,7 @@ class ListingController extends Controller
 
         Listing::create($fields);
 
-        return redirect('/');
+        return redirect()->route('listings.index')->with('success', 'Product deleted successfully!');
+
     }
 }

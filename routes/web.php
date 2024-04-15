@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingImageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,11 +76,23 @@ Route::get('/new-listing', function () {
 
 Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 
-Route::get('/product/{id}', function($id) {
-    return view('temp/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
-});
 
 Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
+
+
+// Route to show individual product
+Route::get('/product/{id}', function($id) {
+    return view('/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
+})->name('product.show');
+// Route to show the edit form
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
+// Route to update the item
+Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+
+// Route to delete the item
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
 
 // Back-end
 Route::post('/listings/new', [ListingController::class, 'newListing']);
