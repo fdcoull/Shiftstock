@@ -11,7 +11,7 @@
       background-color: #f8f9fa;
     }
 
-    .container {
+    .container2 {
       max-width: 600px;
       margin: 0 auto;
       padding: 40px;
@@ -60,7 +60,7 @@
 <body>
 
 
-	<div class="container">
+	<div class="container2">
 	  <h1 class="text-center mb-4">Add Items</h1>
 	  <form id="addItemForm" action="/listings/new" method="POST">
 	  @csrf

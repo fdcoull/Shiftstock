@@ -30,6 +30,8 @@
       border-color: #df7e64;
       color: #ffffff;
     }
+
+
   </style>
 
 
@@ -40,7 +42,9 @@
   </header>
 	
  <!-- Button to add item -->
-    <a id="addItemButton" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/add.html" class="btn btn-custom mt-5">Add Item</a>
+    <div class="container">
+    <a id="addItemButton" href="{{ route('new-listing') }}" class="btn btn-custom mt-5">Add Item</a>
+    </div>
 
     <!-- List to display added items -->
     <ul id="itemList">

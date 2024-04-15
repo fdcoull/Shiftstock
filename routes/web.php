@@ -30,35 +30,35 @@ Route::get('/test-bootstrap', function () {
 // Front-end
 Route::get('/home', function () {
     return view('home');
-})->name('home');;
+})->name('home');
 
 Route::get('/register', function () {
     return view('register');
-})->name('register');;
+})->name('register');
 
 Route::get('/login', function () {
     return view('login');
-})->name('login');;
+})->name('login');
 
 Route::get('/forgotpassword', function () {
     return view('forgotpassword');
-})->name('forgotpassword');;
+})->name('forgotpassword');
 
 Route::get('/logout', function () {
     return view('temp/logout');
-})->name('temp/logout');;
+})->name('temp/logout');
 
 Route::get('/aboutus', function () {
     return view('aboutus');
-})->name('aboutus');;
+})->name('aboutus');
 
 Route::get('/contactus', function () {
     return view('contactus');
-})->name('contactus');;
+})->name('contactus');
 
 Route::get('/cart', function () {
     return view('cart');
-})->name('cart');;
+})->name('cart');
 
 
 // Back-end
@@ -70,7 +70,7 @@ Route::post('/user/login', [UserController::class, 'login']);
 // Front-end
 Route::get('/new-listing', function () {
     return view('new-listing');
-});
+})->name('new-listing');
 
 Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 

@@ -98,7 +98,7 @@
         <button type="submit" id="reset_btn">Reset Password</button>
       </form>
       <div class="additional-info">
-        <span>Remember your password? <a href="login.html">Login</a></span>
+        <span>Remember your password? <a href="{{ route('login') }}">Login</a></span>
       </div>
     </div>
   </div>
