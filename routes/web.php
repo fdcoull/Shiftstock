@@ -33,7 +33,7 @@ Route::get('/register', function () {
 });
 
 Route::get('/login', function () {
-    return view('temp/login');
+    return view('login');
 });
 
 Route::get('/logout', function () {
