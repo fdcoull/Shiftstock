@@ -26,7 +26,8 @@
     }
 
     #special-h5 {
-        margin-left: 12rem;
+        display: flex;
+        justify-content:center;
     }
   </style>
   

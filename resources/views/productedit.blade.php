@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" value="{{ $listing->price }}" class="form-control" required>
+            <input type="decimal" name="price" id="price" value="{{ $listing->price }}" class="form-control" required>
             <select name="currency">
             <option value="GBP">British Pound</option>
             <option value="EUR">Euro</option>

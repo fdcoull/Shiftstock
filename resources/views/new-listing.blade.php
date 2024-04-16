@@ -99,7 +99,7 @@
 		
 		<div class="form-group">
 		  <label for="itemDescription">Price</label>
-		  <input type="number" class="form-control" id="itemPrice" name="price" placeholder="Enter price..."></input>
+		  <input type="decimal" class="form-control" id="itemPrice" name="price" placeholder="Enter price..."></input>
 		  <select name="currency">
             <option value="GBP">British Pound</option>
             <option value="EUR">Euro</option>

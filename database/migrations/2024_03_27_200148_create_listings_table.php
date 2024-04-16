@@ -21,7 +21,7 @@ return new class extends Migration
             $table->double('weight', 12, 3);
             $table->tinyText('weight_unit');
             $table->integer('quantity_inhand');
-            $table->double('price', 11, 2);
+            $table->decimal('price', 11, 2);
             $table->tinyText('currency');
             $table->integer('age');
             $table->date('expiry');

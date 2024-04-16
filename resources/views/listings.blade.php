@@ -64,7 +64,7 @@
   <!-- Main Content -->
   <main class="container" >
     <h2 class="mt-5 mb-4">Available Items</h2>
-    <form action="/listings" id="searchform">
+    <form action="{{ route('listings.search') }}" id="searchform">
       <input type="text" name="query" placeholder="Search items...">
       <input type="submit" value="Search">
     </form>

@@ -74,6 +74,8 @@ Route::get('/new-listing', function () {
 
 Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 
+Route::get('/listings/search', [ListingController::class, 'search'])->name('listings.search');
+
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 
 

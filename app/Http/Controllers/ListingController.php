@@ -33,7 +33,7 @@ class ListingController extends Controller
             'weight' => 'numeric',
             'weight_unit' => ['min:1', 'max:4'],
             'quantity_inhand' => 'integer',
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', 'min:0', 'regex:/^\d+(\.\d{1,2})?$/'],
             'currency' => ['required', 'min:3', 'max:3'],
             'age' => 'numeric',
             'expiry' => 'date'
@@ -56,4 +56,13 @@ class ListingController extends Controller
         return $imageController->store($request, $listing->id);
 
     }
+
+    public function search(Request $request) {
+        $query = $request->input('query');
+        $listings = Listing::where('title', 'like', '%'.$query.'%')
+                            ->orWhere('description', 'like', '%'.$query.'%')
+                            ->get();
+        return view('listings', compact('listings'));
+    }
+
 }

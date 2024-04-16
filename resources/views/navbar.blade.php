@@ -7,8 +7,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 		<!-- Search form -->
-    <form class="form-inline my-2 my-lg-0 ml-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0 ml-auto" action="{{ route('home.search') }}" method="GET">
+      <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <!-- End of search form -->
