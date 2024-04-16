@@ -120,6 +120,9 @@ button:hover {
     </div>
   </div>
 </body>
+  <footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
 <script src="script.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -9,17 +9,27 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .container2 {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: flex-start; /* Align items to the start */
+            justify-content: center;
+        }
+        .row {
+            width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+            margin-top:5rem;
         }
         .item {
-            text-align: center;
+            text-align: left;
+            margin-top: 6rem;
+            margin-left: 5rem;
+
         }
         .item img {
             max-width: 100%;
@@ -27,11 +37,11 @@
             border-radius: 8px;
         }
         .item h2 {
-            font-size: 24px;
+            font-size: 36px;
             color: #333;
         }
         .item p {
-            font-size: 16px;
+            font-size: 20px;
             color: #666;
         }
         .item button {
@@ -47,12 +57,23 @@
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-        background-color: black; /* Change the color of the carousel control arrows */
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to the arrows */
+            background-color: black; /* Change the color of the carousel control arrows */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to the arrows */
+            
         }
 
         p {
-        margin-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        /* Adjustments for responsiveness */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            .col-md-6 {
+                margin-bottom: 20px; /* Add some space between columns */
+            }
         }
     </style>
 </head>
@@ -62,6 +83,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+            @if(count($listingImages) > 1)
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="max-width: 30rem; margin: auto;">
                 <ol class="carousel-indicators">
                     @foreach($listingImages as $index => $image)
@@ -84,6 +106,9 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            @else
+            <img src="{{ asset($listingImages[0]->location) }}" alt="{{ $listing->title }}">
+            @endif
         </div>
         <div class="col-md-6">
             <div class="item">
@@ -120,4 +145,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+  <footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
 </html>

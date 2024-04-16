@@ -23,7 +23,11 @@
         margin: 0;
         padding: 0;
         background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
+
     .container2 {
         max-width: 800px;
         margin: 20px auto;
@@ -32,6 +36,18 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
+    footer {
+        background-color: #343a40; /* Dark color for the footer */
+        color: #fff; /* Text color for the footer */
+        text-align: center;
+        padding: 20px 0; /* Padding for the footer */
+        width: 100%; /* Full width */
+        position: fixed; /* Fixed position */
+        bottom: 0; /* Position at the bottom of the viewport */
+        left: 0; /* Align to the left */
+    }
+
     .cart-item {
         border-bottom: 1px solid #ccc;
         padding: 10px 0;
@@ -97,6 +113,10 @@
         <button class="checkout-btn">Checkout</button>
     </div>
 </div>
+
+  <footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
 
 <script>
     // Sample JavaScript code to dynamically add cart items

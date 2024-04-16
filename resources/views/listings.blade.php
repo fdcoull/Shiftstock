@@ -91,7 +91,9 @@
     <!-- End Item Cards -->
   </main>
   <!-- End Main Content -->
-
+    <footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
   <!-- Bootstrap JS (Optional) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

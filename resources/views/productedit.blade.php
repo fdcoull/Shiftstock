@@ -69,4 +69,7 @@
         <button type="submit" class="btn btn-primary">Update Listing</button>
     </form>
 </div>
+  <footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
 @endsection

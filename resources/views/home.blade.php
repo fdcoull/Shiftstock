@@ -66,9 +66,7 @@
     </div>
 <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-      <p>&copy; 2024 shiftstock. All rights reserved.</p>
-    </div>
+    @include('footer')
   </footer>
   <!-- End Footer -->
 

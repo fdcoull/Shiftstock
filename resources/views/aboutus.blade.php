@@ -6,7 +6,27 @@
   <title>About Us - ShiftStock</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
+   <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+
+    main {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #343a40; /* Dark color for the footer */
+      color: #fff; /* Text color for the footer */
+      text-align: center;
+      padding: 20px 0; /* Padding for the footer */
+      width: 100%; /* Full width */
+      position: fixed; /* Fixed position */
+      bottom: 0; /* Position at the bottom of the viewport */
+      left: 0; /* Align to the left */
+    }
     
     /* Add your custom styles here */
     .jumbotron {
@@ -19,6 +39,7 @@
       text-align: center;
       padding: 100px 0;
     }
+
   </style>
 </head>
 <body>
@@ -56,9 +77,7 @@
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-      <p>&copy; 2024 ShiftStock. All rights reserved.</p>
-    </div>
+    @include('footer')
   </footer>
   <!-- End Footer -->
 
