@@ -50,29 +50,33 @@
 @include('navbar')
 
 <div class="container">
-    <div class="item">
-        <img src="{{ asset('storage/' . $listing->image_path) }}" alt="{{$listing->title}}">
-        <h2>{{$listing->title}}</h2>
-        <p>{{$listing->description}}</p>
-        <p>Price: £{{$listing->price}}</p>
-        <p>Stock Age: {{$listing->age}} years</p>
+    @if($listing)
+        <div class="item">
+            <img src="{{ asset('uploads/' . $listing->image_path) }}" alt="{{$listing->title}}">
+            <h2>{{$listing->title}}</h2>
+            <p>{{$listing->description}}</p>
+            <p>Price: £{{$listing->price}}</p>
+            <p>Stock Age: {{$listing->age}} years</p>
 
-        @auth
-            @if (Auth::user()->id == $listing->user_id)
-                <a href="/product/{{$listing->id}}/edit" class="btn btn-info">Edit</a>
-                <form action="/product/{{$listing->id}}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+            @auth
+                @if (Auth::user()->id == $listing->user_id)
+                    <a href="/product/{{$listing->id}}/edit" class="btn btn-info">Edit</a>
+                    <form action="/product/{{$listing->id}}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                @else
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                @endif
             @else
                 <a href="#" class="btn btn-primary">Buy Now</a>
-            @endif
-        @else
-            <a href="#" class="btn btn-primary">Buy Now</a>
-        @endauth
-        
-    </div>
+            @endauth
+            
+        </div>
+    @else
+        <p>Listing not found.</p>
+    @endif
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -42,9 +42,12 @@ class ListingController extends Controller
 
         $fields['user_id'] = auth()->id();
 
-        Listing::create($fields);
+        $listing = Listing::create($fields);
 
-        return redirect()->route('listings.index')->with('success', 'Product deleted successfully!');
+        // After creating the listing, manage images
+        // Instantiate the image controller and call its store method
+        $imageController = new ListingImageController();
+        return $imageController->store($request, $listing->id);
 
     }
 }

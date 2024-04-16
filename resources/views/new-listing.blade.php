@@ -62,7 +62,7 @@
 
 	<div class="container2">
 	  <h1 class="text-center mb-4">Add Items</h1>
-	  <form id="addItemForm" action="/listings/new" method="POST">
+	  <form id="addItemForm" action="/listings/new" method="POST" enctype="multipart/form-data">
 	  @csrf
 		<div class="form-group">
 		  <label for="itemName">Item Name</label>

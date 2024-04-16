@@ -14,10 +14,12 @@ class ListingImageController extends Controller
     }
 
     public function store(Request $request, int $id) {
+        \Log::info('Received files:', ['files' => $request->file('images')]);
+
         $listing = Listing::find($id);
 
         if (auth()->user()->id !== $listing['user_id']) {
-            return redirect('/');
+            return redirect('new-listing');
         }
 
         $request->validate([
@@ -32,13 +34,13 @@ class ListingImageController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = $listing['id'] . '-' . time() . '-' . $key . '.' . $extension;
 
-                $path = "uploads/listing-images/";
+                $path = "uploads/";
 
                 $file->move($path, $filename);
 
                 $imageData[] = [
-                    'listing_id' => $listing['id'],
-                    'location' => $path . $filename
+                    'listing_id' => $listing->id,  // Ensure $listing->id is accessible and correct
+                    'location' => $path . $filename  // Ensure this concatenation results in a correct file path
                 ];
             }
         }
@@ -55,8 +57,12 @@ class ListingImageController extends Controller
         ListingImage::where('listing_id', $listing['id'])->delete();
 
         //Insert new image references into table
-        ListingImage::insert($imageData);
+        try {
+            ListingImage::insert($imageData);
+        } catch (\Exception $e) {
+            return redirect('/aboutus');
+        }
 
-        return redirect('/');
+        return redirect('/product/{id}');
     }
 }

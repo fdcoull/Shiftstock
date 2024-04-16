@@ -76,9 +76,13 @@ Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
 
 
 // Route to show individual product
-Route::get('/product/{id}', function($id) {
-    return view('/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
-})->name('product.show');
+//Route::get('/product/{id}', function($id) {
+//    return view('/product', ['listing' => Listing::find($id), 'images' => ListingImage::where('listing_id', $id)->get()]);
+//})->name('product.show');
+
+// Change the route to use a dedicated controller method
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 // Route to show the edit form
 Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
 
