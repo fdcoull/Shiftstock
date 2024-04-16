@@ -14,6 +14,25 @@
     <!-- End of search form -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
+
+			@guest
+            <!-- Show this link only to guests -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Log In</a>
+            </li>
+            @endguest
+
+            @auth
+            <!-- Show this link only to authenticated users -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+            </li>
+            <!-- Logout Form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @endauth
+            
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home') }}">Home</a>
             </li>
@@ -23,10 +42,6 @@
             		<li class="nav-item">
               <a class="nav-link" href="{{ route('aboutus') }}">About Us</a>
             </li>
-			<li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">Log In</a>
-            </li>
-            
 			<li class="nav-item">
               <a class="nav-link" href="{{ route('contactus') }}">Contact Us</a>
             </li>

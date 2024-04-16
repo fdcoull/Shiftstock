@@ -104,8 +104,8 @@ button:hover {
       <form action="/user/login" method="POST">
       @csrf
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Enter your username">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Enter your Email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>

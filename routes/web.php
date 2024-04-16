@@ -43,10 +43,6 @@ Route::get('/forgotpassword', function () {
     return view('forgotpassword');
 })->name('forgotpassword');
 
-Route::get('/logout', function () {
-    return view('temp/logout');
-})->name('temp/logout');
-
 Route::get('/aboutus', function () {
     return view('aboutus');
 })->name('aboutus');
@@ -62,7 +58,7 @@ Route::get('/cart', function () {
 
 // Back-end
 Route::post('/user/register', [UserController::class, 'register']);
-Route::post('/user/logout', [UserController::class, 'logout']);
+Route::post('/user/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/user/login', [UserController::class, 'login']);
 
 // Listings
