@@ -61,6 +61,11 @@
             <input type="date" name="expiry" id="expiry" value="{{ $listing->expiry }}" class="form-control">
         </div>
 
+        <div class="form-group">
+            <label for="itemImage">Update Images</label>
+            <input type="file" class="form-control-file" id="itemImage" name="images[]" multiple>
+        </div>
+
         <button type="submit" class="btn btn-primary">Update Listing</button>
     </form>
 </div>
