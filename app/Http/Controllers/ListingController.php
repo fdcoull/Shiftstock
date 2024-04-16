@@ -8,29 +8,36 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     public function index() {
-        if (request()->has('query')) {
-            $listings = Listing::where('title', 'like', '%'. request()->get('query', '') . '%')->orWhere('description', 'like', '%'. request()->get('query', '') . '%')->orderBy('id', 'desc')->get();
-        }
-        else {
-            $listings = Listing::orderBy('id', 'desc')->get();
+        // Fetch listings based on search query or retrieve all listings
+        $listings = request()->has('query') ?
+                    Listing::where('title', 'like', '%'. request()->get('query', '') . '%')
+                           ->orWhere('description', 'like', '%'. request()->get('query', '') . '%')
+                           ->orderBy('id', 'desc')->get() :
+                    Listing::orderBy('id', 'desc')->get();
+
+        // Loop through each listing and eager load its images
+        foreach ($listings as $listing) {
+            $listing->load('images'); // Ensure 'images' is the correct relationship name in your Listing model
         }
 
-        return view('temp/listings', ['listings' => $listings]);
+        // Return the view with listings data
+        return view('listings', compact('listings'));
     }
 
     public function newListing(Request $request) {
         //Validate fields
         $fields = $request->validate([
-            'title' => ['required','string','min:3','max:256'],
-            'description' => ['required','string','max:1000'],
-            'packaging' => ['nullable','string','max:256'],
-            'weight' => ['required','numeric','min:0.01','max:100000'],
-            'weight_unit' => ['required','string','in:kg,lb,oz,g'],
-            'quantity_inhand' => ['required','integer','min:1'],
-            'price' => ['required', 'numeric', 'min:0.01'],
-            'currency' => ['required', 'string', 'size:3'],
-            'age' => ['nullable','date'],
-            'expiry' => ['nullable','date','after:age']
+            'title' => 'required',
+            'description' => 'max:10000',
+            'packaging' => 'max:256',
+            'weight' => 'numeric',
+            'weight_unit' => ['min:1', 'max:4'],
+            'quantity_inhand' => 'integer',
+            'price' => ['required', 'numeric', 'min:0', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'currency' => ['required', 'min:3', 'max:3'],
+            'age' => 'numeric',
+            'expiry' => 'date'
+
         ]);
 
         //Strip tags
@@ -42,8 +49,21 @@ class ListingController extends Controller
 
         $fields['user_id'] = auth()->id();
 
-        Listing::create($fields);
+        $listing = Listing::create($fields);
 
-        return redirect('/');
+        // After creating the listing, manage images
+        // Instantiate the image controller and call its store method
+        $imageController = new ListingImageController();
+        return $imageController->store($request, $listing->id);
+
     }
+
+    public function search(Request $request) {
+        $query = $request->input('query');
+        $listings = Listing::where('title', 'like', '%'.$query.'%')
+                            ->orWhere('description', 'like', '%'.$query.'%')
+                            ->get();
+        return view('listings', compact('listings'));
+    }
+
 }
