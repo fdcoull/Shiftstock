@@ -46,9 +46,12 @@
   </header>
 	
  <!-- Button to add item -->
-    <div class="container">
-    <a id="addItemButton" href="{{ route('new-listing') }}" class="btn btn-custom mt-5">Add Item</a>
-    </div>
+    <!-- Button to add item (only shown if user is logged in) -->
+    @auth
+      <div class="container">
+        <a id="addItemButton" href="{{ route('new-listing') }}" class="btn btn-custom mt-5">Add Item</a>
+      </div>
+    @endauth
 
     <!-- List to display added items -->
     <ul id="itemList">

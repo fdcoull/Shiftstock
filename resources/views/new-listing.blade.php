@@ -13,7 +13,7 @@
 
     .container2 {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 1rem auto 1rem auto;
       padding: 40px;
       background-color: #ffffff;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -51,6 +51,14 @@
 
     button[type="submit"]:hover {
       background-color: #df7e64;
+    }
+
+    #itemWeight {
+        margin-bottom:0;
+    }
+
+    select{
+        margin-top:0.5rem;
     }
   </style>
 </head>
@@ -125,12 +133,6 @@
 		<button type="submit" class="btn btn-primary btn-block">Add Item</button>
 	  </form>
 	</div>
-
-	@auth
-	{{Auth::user()->name}}
-	@else
-	<p>Not logged in</p>
-	@endauth
 
 	<script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

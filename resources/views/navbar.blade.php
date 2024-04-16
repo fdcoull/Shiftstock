@@ -1,4 +1,12 @@
 <!-- Navbar -->
+    <style>
+        #navbar-search {
+            margin-bottom: 0;
+        }
+        #navbar-search-btn {
+            padding: 8px 20px;
+        }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 	  <img src="{{ asset('images/logo.png') }}" alt="Logo" height="30" image-position="left">
@@ -8,8 +16,8 @@
         </button>
 		<!-- Search form -->
     <form class="form-inline my-2 my-lg-0 ml-auto" action="{{ route('listings.search') }}" method="GET">
-      <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search" id="navbar-search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="navbar-search-btn">Search</button>
     </form>
     <!-- End of search form -->
         <div class="collapse navbar-collapse" id="navbarNav">
