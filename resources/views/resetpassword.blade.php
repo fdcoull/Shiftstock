@@ -89,14 +89,21 @@
   </header>
   <div class="login-container">
     <div class="login-box">
-      <h2>Forgot Password</h2>
-      <form method="POST" action="{{ route('forgotpassword') }}">
-        @csrf
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Enter your email">
-        </div>
-        <button type="submit" id="reset_btn">Reset Password</button>
-      </form>
+      <h2>Reset Password</h2>
+      <!-- Form to reset password -->
+        <form method="POST" action="{{ route('resetpassword', $token) }}">
+            @csrf
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your new password">
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation">Confirm New Password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your new password">
+            </div>
+            <button type="submit" class="btn btn-primary">Reset Password</button>
+        </form>
+
       <div class="additional-info">
         <span>Remember your password? <a href="{{ route('login') }}">Login</a></span>
       </div>

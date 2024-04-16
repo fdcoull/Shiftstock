@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\ResetPassword;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -59,4 +63,62 @@ class UserController extends Controller
         auth()->logout();
         return redirect('/home');
     }
+
+    public function forgotPassword(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $token = Str::random(60);
+
+        DB::table('password_reset_tokens')->updateOrInsert(
+            ['email' => $request->email],
+            ['token' => $token, 'created_at' => now()]
+        );
+
+        $resetLink = route('resetpassword.form', $token);
+        Mail::to($request->email)->send(new ResetPassword($resetLink));
+
+        return redirect()->back()->with('success', 'Password reset link sent to your email.');
+
+
+        return redirect()->back()->with('success', 'Password reset link sent to your email.');
+    }
+
+
+    public function resetPasswordForm($token) {
+        $tokenExists = DB::table('password_reset_tokens')->where('token', $token)->exists();
+
+        if (!$tokenExists) {
+            return redirect()->route('forgotpassword')->with('error', 'Invalid token.');
+        }
+
+        return view('resetpassword', ['token' => $token]);
+    }
+
+    public function resetPassword(Request $request, $token) {
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $tokenRecord = DB::table('password_reset_tokens')->where('token', $token)->first();
+
+        if (!$tokenRecord) {
+            return redirect()->route('forgotpassword')->with('error', 'Invalid token.');
+        }
+
+        $user = User::where('email', $tokenRecord->email)->first();
+
+        if (!$user) {
+            return redirect()->route('forgotpassword')->with('error', 'User not found.');
+        }
+
+        $user->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        DB::table('password_reset_tokens')->where('token', $token)->delete();
+
+        return redirect()->route('login')->with('success', 'Password reset successfully.');
+}
 }

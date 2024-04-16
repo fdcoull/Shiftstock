@@ -58,9 +58,13 @@
         @endif
 
         <h2>{{$listing->title}}</h2>
-        <p>{{$listing->description}}</p>
-        <p>Price: £{{$listing->price}}</p>
-        <p>Stock Age: {{$listing->age}} years</p>
+        <p>Description: {{$listing->description}}</p>
+        <p>Packaging: {{$listing->packaging}}</p>
+        <p>Weight: {{$listing->weight}} {{$listing->weight_unit}}</p>
+        <p>Quantity In Hand: {{$listing->quantity_inhand}}</p>
+        <p>Price: {{$listing->price}} {{$listing->currency}} </p>
+        <p>Age: {{$listing->age}} years</p>
+        <p>Expiry: {{$listing->expiry}}</p>
 
         @auth
             @if (Auth::user()->id == $listing->user_id)

@@ -61,6 +61,11 @@ Route::post('/user/register', [UserController::class, 'register']);
 Route::post('/user/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/user/login', [UserController::class, 'login']);
 
+Route::post('/forgotpassword', [UserController::class, 'forgotPassword'])->name('forgotpassword');
+Route::get('/resetpassword/{token}', [UserController::class, 'resetPasswordForm'])->name('resetpassword.form');
+Route::post('/resetpassword/{token}', [UserController::class, 'resetPassword'])->name('resetpassword');
+
+
 // Listings
 // Front-end
 Route::get('/new-listing', function () {

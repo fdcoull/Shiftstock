@@ -24,6 +24,10 @@
 	.navbar-brand img {
       margin-right: 40px; /* Adjust the margin if needed */
     }
+
+    #special-h5 {
+        margin-left: 12rem;
+    }
   </style>
   
   <header>
@@ -37,13 +41,18 @@
     <p class="lead">click here to go to our stock available to buy and sell.</p>
     <a class="btn btn-primary btn-lg" href="{{ route('aboutus') }}" role="button">Learn more</a>
   </div>
-
+    <h3 class="card-title" id="special-h5">Special Offers</h3>
     <div class="container">
         <div class="row">
             @foreach ($products as $product)
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->title }}">
+                    @if ($product->images->isNotEmpty())
+                        <img src="{{ asset($product->images->first()->location) }}" class="card-img-top" alt="{{ $product->title }}">
+                    @else
+                        <!-- If there are no images associated with the product, display a placeholder -->
+                        <img src="{{ asset('images/placeholder.jpg') }}" class="card-img-top" alt="Placeholder Image">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
