@@ -8,14 +8,20 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     public function index() {
-        if (request()->has('query')) {
-            $listings = Listing::where('title', 'like', '%'. request()->get('query', '') . '%')->orWhere('description', 'like', '%'. request()->get('query', '') . '%')->orderBy('id', 'desc')->get();
-        }
-        else {
-            $listings = Listing::orderBy('id', 'desc')->get();
+        // Fetch listings based on search query or retrieve all listings
+        $listings = request()->has('query') ?
+                    Listing::where('title', 'like', '%'. request()->get('query', '') . '%')
+                           ->orWhere('description', 'like', '%'. request()->get('query', '') . '%')
+                           ->orderBy('id', 'desc')->get() :
+                    Listing::orderBy('id', 'desc')->get();
+
+        // Loop through each listing and eager load its images
+        foreach ($listings as $listing) {
+            $listing->load('images'); // Ensure 'images' is the correct relationship name in your Listing model
         }
 
-        return view('listings', ['listings' => $listings]);
+        // Return the view with listings data
+        return view('listings', compact('listings'));
     }
 
     public function newListing(Request $request) {

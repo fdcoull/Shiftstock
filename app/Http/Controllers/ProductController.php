@@ -16,7 +16,10 @@ class ProductController extends Controller
             return redirect('/')->with('error', 'Listing not found.');
         }
 
-        return view('product', compact('listing'));
+        // Fetch the first image of the listing from the ListingImage model
+        $listingImages = ListingImage::where('listing_id', $id)->first();
+
+        return view('product', compact('listing', 'listingImages'));
     }
 
     public function index()

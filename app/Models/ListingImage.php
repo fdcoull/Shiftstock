@@ -15,4 +15,5 @@ class ListingImage extends Model
         'listing_id',
         'location'
     ];
+
 }

@@ -35,12 +35,13 @@ class ListingImageController extends Controller
                 $filename = $listing['id'] . '-' . time() . '-' . $key . '.' . $extension;
 
                 $path = "uploads/";
+                $fullPath = $path . $filename;
 
-                $file->move($path, $filename);
+                $file->move(public_path($path), $filename);
 
                 $imageData[] = [
                     'listing_id' => $listing->id,  // Ensure $listing->id is accessible and correct
-                    'location' => $path . $filename  // Ensure this concatenation results in a correct file path
+                    'location' => $fullPath  // Ensure this concatenation results in a correct file path
                 ];
             }
         }
@@ -63,6 +64,7 @@ class ListingImageController extends Controller
             return redirect('/aboutus');
         }
 
-        return redirect('/product/{id}');
+        return redirect()->route('listings.index')->with('success', 'Listing created successfully!');
+
     }
 }

@@ -74,7 +74,11 @@
       @foreach($listings as $listing)
       <div class="col-md-4">
         <div class="card item">
-          <img src="{{ asset('storage/' . $listing->image_path) }}" class="card-img-top" alt="Item Image">
+          @if($listing->images->isNotEmpty())
+            <img src="{{ asset($listing->images->first()->location) }}" alt="{{ $listing->title }}" class="card-img-top img-fluid">
+          @else
+            <p>No image found for this listing.</p>
+          @endif
           <div class="card-body">
             <h5 class="card-title">{{ $listing->title }}</h5>
             <p class="card-text">{{ $listing->description }}</p>
