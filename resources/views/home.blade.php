@@ -11,7 +11,7 @@
   <style>
     /* Add your custom styles here */
     .jumbotron {
-      background-image: url("file:///D:/Users/Emma%20Davidson/Downloads/home-banner.jpg");
+      background-image: url("{{ asset('images/home-banner.jpg') }}");
       background-size: cover; 
 	  background-repeat: no-repeat;
 	  background-position: center; /* Center the background image */
@@ -38,23 +38,22 @@
     <a class="btn btn-primary btn-lg" href="{{ route('aboutus') }}" role="button">Learn more</a>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="file:///D:/Users/Emma%20Davidson/Downloads/apron.jpg" class="card-img-top" alt="Special Offer 1">
-          <div class="card-body">
-            <h5 class="card-title">Special Offer 1</h5>
-			<p class="card-text" id="text"> we now have PVC Aprons on offer Check out our limited-time offer.</p>
-			<button onclick="changeTextSize()">Increase Text Size</button>
-			<script src="https://github.com/emma123456789101/test-gp/blob/main/scripts.js"></script>
-            <a href="{{ route('listings.index') }}" Items class="btn btn-primary">Shop Now</a>
-          </div>
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->title }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
-      </div>
-      <!-- Add more cards or content here -->
     </div>
-  </div>
 <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
     <div class="container">

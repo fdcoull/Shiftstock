@@ -30,9 +30,6 @@ Route::get('/test-bootstrap', function () {
 
 // User
 // Front-end
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
 Route::get('/register', function () {
     return view('register');
@@ -75,6 +72,8 @@ Route::get('/new-listing', function () {
 })->name('new-listing');
 
 Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
+
+Route::get('/home', [ProductController::class, 'index'])->name('home');
 
 
 Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);

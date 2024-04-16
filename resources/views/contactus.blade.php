@@ -9,7 +9,7 @@
   <style>
     /* Custom Styles */
     .jumbotron {
-       background-image: url('file:///D:/Users/Emma%20Davidson/Downloads/SS.2.jpg');
+      background-image: url("{{ asset('images/about-contact-banners.jpg') }}");
       background-size: cover; 
 	  background-repeat: no-repeat;
 	  background-position: center; /* Center the background image */

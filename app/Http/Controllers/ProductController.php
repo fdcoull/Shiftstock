@@ -7,6 +7,16 @@ use App\Models\Listing;
 
 class ProductController extends Controller
 {
+
+    public function index()
+    {
+        // Fetch 3 random products from the database
+        $products = Listing::inRandomOrder()->take(3)->get();
+
+        // Pass the products to the view
+        return view('home', compact('products'));
+    }
+
     public function edit($id){
     $listing = Listing::findOrFail($id);
     return view('productedit', compact('listing'));

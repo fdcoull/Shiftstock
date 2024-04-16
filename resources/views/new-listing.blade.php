@@ -118,9 +118,9 @@
 		</div>
 		
 		<div class="form-group">
-		  <label for="itemImage">Upload Image</label>
-		  <input type="file" class="form-control-file" id="itemImage">
-		</div>
+          <label for="itemImage">Upload Image</label>
+          <input type="file" class="form-control-file" id="itemImage" name="images[]" multiple>
+        </div>
 		
 		<button type="submit" class="btn btn-primary btn-block">Add Item</button>
 	  </form>
