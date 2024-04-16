@@ -4,7 +4,10 @@
     "\\app",
     "\\app\\Http",
     "\\app\\Http\\Controllers",
+    "\\app\\Http\\Middleware",
     "\\app\\Models",
+    "\\public",
+    "\\resources",
     "\\routes"
   ],
   "SelectedNode": "\\app\\Models\\Listing.php",
