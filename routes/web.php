@@ -37,6 +37,7 @@ Route::get('/register', function () {
 
 Route::get('/login', function () {
     return view('login');
+
 })->name('login');
 
 Route::get('/forgotpassword', function () {
@@ -54,6 +55,7 @@ Route::get('/contactus', function () {
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
+
 
 
 // Back-end
