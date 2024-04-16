@@ -51,8 +51,7 @@
                     @if ($product->images->isNotEmpty())
                         <img src="{{ asset($product->images->first()->location) }}" class="card-img-top" alt="{{ $product->title }}">
                     @else
-                        <!-- If there are no images associated with the product, display a placeholder -->
-                        <img src="{{ asset('images/placeholder.jpg') }}" class="card-img-top" alt="Placeholder Image">
+                        <img src="{{ asset('images/placeholder.png') }}" alt="Placeholder" class="card-img-top img-fluid">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>

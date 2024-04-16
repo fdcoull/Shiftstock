@@ -80,7 +80,7 @@
           @if($listing->images->isNotEmpty())
             <img src="{{ asset($listing->images->first()->location) }}" alt="{{ $listing->title }}" class="card-img-top img-fluid">
           @else
-            <p>No image found for this listing.</p>
+            <img src="{{ asset('images/placeholder.png') }}" alt="Placeholder" class="card-img-top img-fluid">
           @endif
           <div class="card-body">
             <h5 class="card-title">{{ $listing->title }}</h5>

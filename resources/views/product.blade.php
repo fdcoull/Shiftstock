@@ -83,31 +83,31 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            @if(count($listingImages) > 1)
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="max-width: 30rem; margin: auto;">
-                <ol class="carousel-indicators">
-                    @foreach($listingImages as $index => $image)
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
-                    @endforeach
-                </ol>
-                <div class="carousel-inner">
-                    @foreach($listingImages as $index => $image)
-                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                            <img class="d-block w-100" src="{{ asset($image->location) }}" alt="{{ $listing->title }}">
-                        </div>
-                    @endforeach
+            @if(count($listingImages) > 0)
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @foreach($listingImages as $index => $image)
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+                        @endforeach
+                    </ol>
+                    <div class="carousel-inner">
+                        @foreach($listingImages as $index => $image)
+                            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                <img class="d-block w-100" src="{{ asset($image->location) }}" alt="{{ $listing->title }}">
+                            </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
             @else
-            <img src="{{ asset($listingImages[0]->location) }}" alt="{{ $listing->title }}">
+                <img src="{{ asset('images/placeholder.png') }}" alt="Placeholder Image" class="img-fluid">
             @endif
         </div>
         <div class="col-md-6">
