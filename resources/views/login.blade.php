@@ -43,10 +43,7 @@ label {
   display: block;
   margin-bottom: 5px;
   color: #666;
-<<<<<<< HEAD
   text-align:left;
-=======
->>>>>>> feature/error-handling
 }
 
 input[type="text"],
@@ -57,11 +54,7 @@ input[type="password"] {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD
 #login_btn {
-=======
-button {
->>>>>>> feature/error-handling
   width: calc(100% - 20px);
   padding: 10px;
   background-color: #007bff;
@@ -99,42 +92,7 @@ button:hover {
 </head>
 <body>
   <header>
-<<<<<<< HEAD
     @include('navbar')
-=======
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">ShiftStock</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="items.html">items</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">about Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/Emma%20Davidson/OneDrive%20-%20Edinburgh%20Napier%20University/Group%20Project%20SMS/pages/log.html">log in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">contact us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.html">cart</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
->>>>>>> feature/error-handling
   </header>
 
 
@@ -143,46 +101,30 @@ button:hover {
   <div class="login-container">
     <div class="login-box">
       <h2>Welcome Back!</h2>
-<<<<<<< HEAD
       <form action="/user/login" method="POST">
       @csrf
         <div class="form-group">
           <label for="email">Email</label>
           <input type="text" id="email" name="email" placeholder="Enter your Email">
-=======
-      <form>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Enter your username">
->>>>>>> feature/error-handling
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password">
         </div>
-<<<<<<< HEAD
         <button id="login_btn" type="submit">Login</button>
       </form>
       <div class="additional-info">
         <a href="{{ route('forgotpassword')}}">Forgot password?</a>
         <span>Don't have an account? <a href="{{ route('register') }}">Sign up</a></span>
-=======
-        <button type="submit">Login</button>
-      </form>
-      <div class="additional-info">
-        <a href="#">Forgot password?</a>
-        <span>Don't have an account? <a href="#">Sign up</a></span>
->>>>>>> feature/error-handling
+
       </div>
     </div>
   </div>
 </body>
-<<<<<<< HEAD
   <footer class="bg-dark text-white text-center py-3">
     @include('footer')
   </footer>
-=======
->>>>>>> feature/error-handling
+
 <script src="script.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
