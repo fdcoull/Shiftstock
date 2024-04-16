@@ -17,7 +17,7 @@ class ProductController extends Controller
         }
 
         // Fetch the first image of the listing from the ListingImage model
-        $listingImages = ListingImage::where('listing_id', $id)->first();
+        $listingImages = ListingImage::where('listing_id', $id)->get();
 
         return view('product', compact('listing', 'listingImages'));
     }

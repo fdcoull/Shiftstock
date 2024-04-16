@@ -44,45 +44,77 @@
         .item button:hover {
             background-color: #0056b3;
         }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+        background-color: black; /* Change the color of the carousel control arrows */
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to the arrows */
+        }
+
+        p {
+        margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
 @include('navbar')
 
 <div class="container">
-    <div class="item">
-        @if($listingImages)
-            <img src="{{ asset($listingImages->location) }}" alt="{{ $listing->title }}">
-        @else
-            <p>No image found for this listing.</p>
-        @endif
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="max-width: 30rem; margin: auto;">
+                <ol class="carousel-indicators">
+                    @foreach($listingImages as $index => $image)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+                    @endforeach
+                </ol>
+                <div class="carousel-inner">
+                    @foreach($listingImages as $index => $image)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                            <img class="d-block w-100" src="{{ asset($image->location) }}" alt="{{ $listing->title }}">
+                        </div>
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="item">
+                <h2>{{$listing->title}}</h2>
+                <p>Description: {{$listing->description}}</p>
+                <p>Packaging: {{$listing->packaging}}</p>
+                <p>Weight: {{$listing->weight}} {{$listing->weight_unit}}</p>
+                <p>Quantity In Hand: {{$listing->quantity_inhand}}</p>
+                <p>Price: {{$listing->price}} {{$listing->currency}} </p>
+                <p>Age: {{$listing->age}} years</p>
+                <p>Expiry: {{$listing->expiry}}</p>
 
-        <h2>{{$listing->title}}</h2>
-        <p>Description: {{$listing->description}}</p>
-        <p>Packaging: {{$listing->packaging}}</p>
-        <p>Weight: {{$listing->weight}} {{$listing->weight_unit}}</p>
-        <p>Quantity In Hand: {{$listing->quantity_inhand}}</p>
-        <p>Price: {{$listing->price}} {{$listing->currency}} </p>
-        <p>Age: {{$listing->age}} years</p>
-        <p>Expiry: {{$listing->expiry}}</p>
-
-        @auth
-            @if (Auth::user()->id == $listing->user_id)
-                <a href="/product/{{$listing->id}}/edit" class="btn btn-info">Edit</a>
-                <form action="/product/{{$listing->id}}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            @else
-                <a href="#" class="btn btn-primary">Buy Now</a>
-            @endif
-        @else
-            <a href="#" class="btn btn-primary">Buy Now</a>
-        @endauth
-        
+                @auth
+                    @if (Auth::user()->id == $listing->user_id)
+                        <a href="/product/{{$listing->id}}/edit" class="btn btn-info">Edit</a>
+                        <form action="/product/{{$listing->id}}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    @else
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    @endif
+                @else
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                @endauth
+            </div>
+        </div>
     </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
