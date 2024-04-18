@@ -101,18 +101,21 @@ button:hover {
       <form action="{{ route('login') }}" method="POST">
       @csrf
         <div class="form-group">
+        <!-- Add this snippet where you want to display the error message -->
+        @if($errors->has('email'))
+            <span class="text-danger">{{ $errors->first('email') }}</span>
+        @endif
+
+        <!-- Add this snippet where you want to display the error message -->
+        @if($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+        @endif
           <label for="email">Email</label>
           <input type="text" id="email" name="email" placeholder="Enter your Email" value="{{ old('email') }}">
-          @error('email')
-              <span class="text-danger">{{ $message }}</span>
-          @enderror
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password">
-          @error('password')
-              <span class="text-danger">{{ $message }}</span>
-          @enderror
         </div>
         <button id="login_btn" type="submit">Login</button>
       </form>

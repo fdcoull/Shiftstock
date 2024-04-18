@@ -79,8 +79,7 @@ class UserController extends Controller
             return redirect()->intended('home');
         }
 
-        // If authentication fails, return back with an error message
-        return redirect()->route('login')->withErrors([
+        return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->withInput($request->only('email'));
     }
