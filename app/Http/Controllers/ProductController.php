@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Listing;
 use App\Models\ListingImage;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
@@ -21,6 +24,16 @@ class ProductController extends Controller
 
         return view('product', compact('listing', 'listingImages'));
     }
+
+    public function userlistings() {
+        // Retrieve user listings from the database
+        $userId = Auth::id();
+        $listings = Listing::where('user_id', $userId)->get();
+
+        // Pass the listings data to the view
+        return view('userlistings', ['listings' => $listings]);
+    }
+
 
     public function index()
     {

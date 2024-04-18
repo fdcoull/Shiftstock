@@ -37,6 +37,7 @@ Route::get('/register', function () {
 
 Route::get('/login', function () {
     return view('login');
+
 })->name('login');
 
 Route::get('/forgotpassword', function () {
@@ -78,6 +79,11 @@ Route::get('/listings/search', [ListingController::class, 'search'])->name('list
 
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 
+Route::get('/account', [UserController::class, 'account'])->name('account');
+
+Route::post('/upload-profile-picture', [UserController::class, 'uploadProfilePicture'])->name('upload.profile.picture');
+
+Route::get('/user/listings', [ProductController::class, 'userlistings'])->name('user.listings');
 
 Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
 
