@@ -61,6 +61,23 @@
         margin-bottom:0;
     }
 
+    #flex-div{
+        display:flex;
+        justify-content:center;
+    }
+
+    #btn-custom {
+        background-color: #df7e64;
+        border-color: #df7e64;
+        color: #415a77;
+    }
+
+    #btn-custom:hover {
+      background-color: #df7e64;
+      border-color: #df7e64;
+      color: #ffffff;
+    }
+
   </style>
 </head>
 <body>
@@ -77,10 +94,11 @@
                         <!-- Check if the user has a profile picture -->
                         @if(Auth::user()->profile_picture)
                             <!-- If the user has a profile picture, display the current picture -->
-                            <div class="profile-pic center mb-3">
-                                <img src="{{ asset(Auth::user()->profile_picture) }}" alt="Profile Picture" class="img-fluid" id="profile-pic">
+                            <div id="flex-div">
+                                <div class="profile-pic center mb-3">
+                                    <img src="{{ asset(Auth::user()->profile_picture) }}" alt="Profile Picture" class="img-fluid" id="profile-pic">
+                                </div>
                             </div>
-
                             <!-- Display button to update profile picture -->
                             <form id="update-profile-form" method="POST" action="{{ route('upload.profile.picture') }}" enctype="multipart/form-data">
                                 @csrf
@@ -88,7 +106,7 @@
                                     <input type="file" class="custom-file-input" id="profile-picture-input" name="profile_picture">
                                     <label class="custom-file-label" for="profile-picture-input">Choose file</label>
                                 </div>
-                                <button type="submit" class="btn btn-custom mt-3">Update Profile Picture</button>
+                                <button type="submit" class="btn btn-custom mt-3" id="btn-custom">Update Profile Picture</button>
                             </form>
                         @else
                             <!-- If the user doesn't have a profile picture, display a placeholder image -->
