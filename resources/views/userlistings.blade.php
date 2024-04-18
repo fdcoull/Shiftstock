@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Your Listings</h2>
+        <h2 class="h2 mt-3">Your Listings</h2>
         <div class="row">
             @foreach($listings as $listing)
             <div class="col-md-4">

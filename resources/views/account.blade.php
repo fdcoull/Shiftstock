@@ -78,6 +78,10 @@
       color: #ffffff;
     }
 
+    #profile-picture-input2 {
+            display: none;
+        }
+
   </style>
 </head>
 <body>
@@ -102,11 +106,11 @@
                             <!-- Display button to update profile picture -->
                             <form id="update-profile-form" method="POST" action="{{ route('upload.profile.picture') }}" enctype="multipart/form-data">
                                 @csrf
+                                <button type="button" class="btn btn-custom mt-3" id="btn-custom">Update Profile Picture</button>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="profile-picture-input" name="profile_picture">
-                                    <label class="custom-file-label" for="profile-picture-input">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="profile-picture-input" name="profile_picture" style="display: none;">
+                                    <label class="custom-file-label" for="profile-picture-input" id="profile-picture-input2">Choose file</label>
                                 </div>
-                                <button type="submit" class="btn btn-custom mt-3" id="btn-custom">Update Profile Picture</button>
                             </form>
                         @else
                             <!-- If the user doesn't have a profile picture, display a placeholder image -->
@@ -117,13 +121,13 @@
                             <form id="add-profile-form" method="POST" action="{{ route('upload.profile.picture') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="profile-picture-input" name="profile_picture">
+                                    <input type="file" class="custom-file-input" id="profile-picture-input" name="profile_picture" style="display: none;">
                                     <label class="custom-file-label" for="profile-picture-input">Choose file</label>
                                 </div>
-                                <button type="submit" class="btn-custom mt-3">Add Profile Picture</button>
+                                <button type="button" class="btn-custom mt-3" id="btn-custom">Add Profile Picture</button>
                             </form>
                         @endif
-                    </div>                               
+                    </div>                        
                     <div class="form-group row">
                         <label for="businessname" class="col-md-4 col-form-label text-md-center">{{ $user->business_name }}</label>
                     </div>
@@ -145,5 +149,17 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('btn-custom').addEventListener('click', function() {
+        document.getElementById('profile-picture-input').click();
+    });
+
+    document.getElementById('profile-picture-input').addEventListener('change', function() {
+        document.getElementById('update-profile-form').submit();
+    });
+</script>
+<footer class="bg-dark text-white text-center py-3">
+    @include('footer')
+  </footer>
 </body>
 </html>

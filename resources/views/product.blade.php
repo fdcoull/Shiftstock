@@ -13,11 +13,12 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        .container {
+        .container2 {
             flex: 1;
             display: flex;
             align-items: flex-start; /* Align items to the start */
             justify-content: center;
+            margin-bottom:2rem;
         }
         .row {
             width: 100%;
@@ -80,7 +81,7 @@
 <body>
 @include('navbar')
 
-<div class="container">
+<div class="container2">
     <div class="row">
         <div class="col-md-6">
             @if(count($listingImages) > 0)

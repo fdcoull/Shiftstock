@@ -14,8 +14,6 @@ class ListingImageController extends Controller
     }
 
     public function store(Request $request, int $id) {
-        \Log::info('Received files:', ['files' => $request->file('images')]);
-
         $listing = Listing::find($id);
 
         if (auth()->user()->id !== $listing['user_id']) {
@@ -23,48 +21,34 @@ class ListingImageController extends Controller
         }
 
         $request->validate([
-            'images.*' => 'required|image|mimes:png,jpg,jpeg'
-
+            'images.*' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
-        //Upload files
         $imageData = [];
+
+
         if ($files = $request->file('images')) {
             foreach ($files as $key => $file) {
                 $extension = $file->getClientOriginalExtension();
                 $filename = $listing['id'] . '-' . time() . '-' . $key . '.' . $extension;
 
-                $path = "uploads/";
-                $fullPath = $path . $filename;
+                $path = "uploads/listing-images/";
 
-                $file->move(public_path($path), $filename);
+                $file->move($path, $filename);
 
                 $imageData[] = [
-                    'listing_id' => $listing->id,  // Ensure $listing->id is accessible and correct
-                    'location' => $fullPath  // Ensure this concatenation results in a correct file path
+                    'listing_id' => $listing['id'],
+                    'location' => $path . $filename
                 ];
             }
         }
 
-        //Search for previous images and delete
-        $existingImages = ListingImage::where('listing_id', $listing['id'])->get();
-        foreach ($existingImages as $existingImage) {
-            if (File::exists($existingImage['location'])) {
-                File::delete($existingImage['location']);
-            }
-        }
-
-        //Remove old image references from table
+        // Delete previous images
         ListingImage::where('listing_id', $listing['id'])->delete();
 
-        //Insert new image references into table
-        try {
-            ListingImage::insert($imageData);
-        } catch (\Exception $e) {
-            return redirect('/aboutus');
-        }
+        // Insert new image references into table
+        ListingImage::insert($imageData);
 
-        return redirect()->route('listings.index')->with('success', 'Listing created successfully!');
-
+        return redirect()->route('product.show', ['id' => $id])->with('success', 'Images updated successfully!');
     }
 }
