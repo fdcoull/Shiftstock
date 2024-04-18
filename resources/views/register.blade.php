@@ -106,7 +106,9 @@ button:hover {
       <h2>Register Here</h2>
       <form action="/user/register" method="POST">
       @csrf
-
+        <div class="alert alert-danger" role="alert">
+          This is a business to business site so make sure to use your business email.
+        </div> 
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="username" name="name" placeholder="Enter your Name">
