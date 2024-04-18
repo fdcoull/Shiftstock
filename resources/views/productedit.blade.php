@@ -17,7 +17,7 @@ select {
 
     <div class="container">
         <h1>Edit Listing</h1>
-        <form action="{{ route('product.update', $listing->id) }}" method="POST">
+        <form action="{{ route('product.update', ['id' => $listing->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -78,6 +78,14 @@ select {
                 <label for="itemImage">Update Images</label>
                 <input type="file" class="form-control-file" id="itemImage" name="images[]" multiple>
             </div>
+
+            <div class="form-group">
+                <label>Delete Images</label><br>
+                @foreach($listingImages as $image)
+                    <input type="checkbox" name="delete_images[]" value="{{ $image->id }}"> {{ $image->location }}<br>
+                @endforeach
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Update Listing</button>
         </form>

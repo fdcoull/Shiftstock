@@ -5,13 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
+
 
 class UserController extends Controller
 {
+
+    public function account()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+
+        $listings = $user->listings;
+
+        // Check if user is logged in
+        if ($user) {
+            // Load the user's listings
+            $user->load('listings');
+
+            // Pass the user data to the view
+            return view('account', compact('user', 'listings'));
+        } else {
+            // Redirect to login if user is not authenticated
+            return redirect()->route('login');
+        }
+    }
+
+
     public function register(Request $request) {
         // Validate field inputs
         $fields = $request->validate([
@@ -55,8 +81,9 @@ class UserController extends Controller
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        ])->withInput($request->only('email'));
     }
+
 
     public function logout() {
         // Un-authenticate user
@@ -120,5 +147,29 @@ class UserController extends Controller
         DB::table('password_reset_tokens')->where('token', $token)->delete();
 
         return redirect()->route('login')->with('success', 'Password reset successfully.');
-}
+    }
+
+    // Method to handle profile picture upload
+    public function uploadProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $user = Auth::user();
+        $path = 'uploads/profile-pictures/';
+        $filename = 'profile_' . $user->id . '.' . $request->profile_picture->extension();
+        $request->profile_picture->move(public_path($path), $filename);
+
+        // Save the profile picture location to the user model
+        $user->profile_picture = $path . $filename;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile picture uploaded successfully!');
+    }
+
+    public function updateProfilePicture(Request $request)
+    {
+        // Similar to uploadProfilePicture method, but update existing profile picture
+    }
 }

@@ -95,17 +95,23 @@ button:hover {
     @include('navbar')
   </header>
 
-
-</head>
-<body>
   <div class="login-container">
     <div class="login-box">
       <h2>Welcome Back!</h2>
-      <form action="/user/login" method="POST">
+      <form action="{{ route('login') }}" method="POST">
       @csrf
         <div class="form-group">
+        <!-- Add this snippet where you want to display the error message -->
+        @if($errors->has('email'))
+            <span class="text-danger">{{ $errors->first('email') }}</span>
+        @endif
+
+        <!-- Add this snippet where you want to display the error message -->
+        @if($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+        @endif
           <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Enter your Email">
+          <input type="text" id="email" name="email" placeholder="Enter your Email" value="{{ old('email') }}">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
@@ -120,15 +126,16 @@ button:hover {
       </div>
     </div>
   </div>
-</body>
+
   <footer class="bg-dark text-white text-center py-3">
     @include('footer')
   </footer>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
+
 

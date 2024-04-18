@@ -39,6 +39,9 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('account') }}">Account</a>
+            </li>
             @endauth
             
             <li class="nav-item">

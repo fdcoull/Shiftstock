@@ -61,7 +61,8 @@ Route::get('/cart', function () {
 // Back-end
 Route::post('/user/register', [UserController::class, 'register']);
 Route::post('/user/logout', [UserController::class, 'logout'])->name('logout');
-Route::post('/user/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
 
 Route::post('/forgotpassword', [UserController::class, 'forgotPassword'])->name('forgotpassword');
 Route::get('/resetpassword/{token}', [UserController::class, 'resetPasswordForm'])->name('resetpassword.form');
@@ -80,6 +81,11 @@ Route::get('/listings/search', [ListingController::class, 'search'])->name('list
 
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 
+Route::get('/account', [UserController::class, 'account'])->name('account');
+
+Route::post('/upload-profile-picture', [UserController::class, 'uploadProfilePicture'])->name('upload.profile.picture');
+
+Route::get('/user/listings', [ProductController::class, 'userlistings'])->name('user.listings');
 
 Route::get('/product/{id}/upload', [ListingImageController::class, 'index']);
 
