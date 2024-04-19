@@ -114,6 +114,7 @@
         <div class="col-md-6">
             <div class="item">
                 <h2>{{$listing->title}}</h2>
+                <p>Seller: <strong>{{$listing->seller->business_name}}</strong></p>
                 <p>Description: {{$listing->description}}</p>
                 <p>Packaging: {{$listing->packaging}}</p>
                 <p>Weight: {{$listing->weight}} {{$listing->weight_unit}}</p>
@@ -121,6 +122,7 @@
                 <p>Price: {{$listing->price}} {{$listing->currency}} </p>
                 <p>Age: {{$listing->age}} years</p>
                 <p>Expiry: {{$listing->expiry}}</p>
+                <p>Contact Email: <strong>{{$listing->seller->email}}</strong></p>
 
                 @auth
                     @if (Auth::user()->id == $listing->user_id)

@@ -84,7 +84,7 @@
           @endif
           <div class="card-body">
             <h5 class="card-title">{{ $listing->title }}</h5>
-            <p class="card-text">{{ $listing->description }}</p>
+            <p class="card-text">{{ $listing->seller->business_name }}</p>
             <a href="/product/{{ $listing->id }}" class="btn btn-primary">More Details</a>
           </div>
         </div>

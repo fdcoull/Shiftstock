@@ -25,4 +25,8 @@ class Listing extends Model
     {
         return $this->hasMany(ListingImage::class);
     }
+
+    public function seller() {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

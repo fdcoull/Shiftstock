@@ -18,6 +18,7 @@ class ListingController extends Controller
         // Loop through each listing and eager load its images
         foreach ($listings as $listing) {
             $listing->load('images'); // Ensure 'images' is the correct relationship name in your Listing model
+            $listing->load('seller');
         }
 
         // Return the view with listings data
