@@ -55,7 +55,7 @@
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>
-                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text">{{ $product->seller->business_name }}</p>
                         <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
