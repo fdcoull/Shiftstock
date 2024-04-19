@@ -19,7 +19,6 @@
                         @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $listing->title }}</h5>
-                        <p class="card-text">{{ $listing->description }}</p>
                         <a href="{{ route('product.show', ['id' => $listing->id]) }}" class="btn btn-primary">View Product</a>
                     </div>
                 </div>
