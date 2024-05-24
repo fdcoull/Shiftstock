@@ -20,10 +20,6 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/test-bootstrap', function () {
     return view('test-bootstrap');
 });
@@ -79,6 +75,7 @@ Route::get('/listings', [ListingController::class, 'index'])->name('listings.ind
 
 Route::get('/listings/search', [ListingController::class, 'search'])->name('listings.search');
 
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 
 Route::get('/account', [UserController::class, 'account'])->name('account');
